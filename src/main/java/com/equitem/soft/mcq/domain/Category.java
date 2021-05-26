@@ -1,7 +1,9 @@
 package com.equitem.soft.mcq.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -18,6 +20,11 @@ public class Category implements Serializable {
 
     @Field("code")
     private String code;
+
+    @DBRef
+    @Field("mcqPapper")
+    @JsonIgnoreProperties(value = { "questions", "categories" }, allowSetters = true)
+    private McqPapper mcqPapper;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public String getId() {
@@ -44,6 +51,19 @@ public class Category implements Serializable {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public McqPapper getMcqPapper() {
+        return this.mcqPapper;
+    }
+
+    public Category mcqPapper(McqPapper mcqPapper) {
+        this.setMcqPapper(mcqPapper);
+        return this;
+    }
+
+    public void setMcqPapper(McqPapper mcqPapper) {
+        this.mcqPapper = mcqPapper;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

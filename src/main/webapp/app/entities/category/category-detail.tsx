@@ -36,6 +36,10 @@ export const CategoryDetail = (props: ICategoryDetailProps) => {
             </span>
           </dt>
           <dd>{categoryEntity.code}</dd>
+          <dt>
+            <Translate contentKey="mcqApp.category.mcqPapper">Mcq Papper</Translate>
+          </dt>
+          <dd>{categoryEntity.mcqPapper ? categoryEntity.mcqPapper.id : ''}</dd>
         </dl>
         <Button tag={Link} to="/category" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}
