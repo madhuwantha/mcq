@@ -34,7 +34,7 @@ public class Question implements Serializable {
 
     @DBRef
     @Field("pappers")
-    @JsonIgnoreProperties(value = { "category", "questions" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "questions", "categories" }, allowSetters = true)
     private Set<McqPapper> pappers = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

@@ -7,6 +7,8 @@ import { Translate, translate } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 
+import { IMcqPapper } from 'app/shared/model/mcq-papper.model';
+import { getEntities as getMcqPappers } from 'app/entities/mcq-papper/mcq-papper.reducer';
 import { getEntity, updateEntity, createEntity, reset } from './category.reducer';
 import { ICategory } from 'app/shared/model/category.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
@@ -17,7 +19,7 @@ export interface ICategoryUpdateProps extends StateProps, DispatchProps, RouteCo
 export const CategoryUpdate = (props: ICategoryUpdateProps) => {
   const [isNew] = useState(!props.match.params || !props.match.params.id);
 
-  const { categoryEntity, loading, updating } = props;
+  const { categoryEntity, mcqPappers, loading, updating } = props;
 
   const handleClose = () => {
     props.history.push('/category');
@@ -29,6 +31,8 @@ export const CategoryUpdate = (props: ICategoryUpdateProps) => {
     } else {
       props.getEntity(props.match.params.id);
     }
+
+    props.getMcqPappers();
   }, []);
 
   useEffect(() => {
@@ -42,6 +46,7 @@ export const CategoryUpdate = (props: ICategoryUpdateProps) => {
       const entity = {
         ...categoryEntity,
         ...values,
+        mcqPapper: mcqPappers.find(it => it.id.toString() === values.mcqPapperId.toString()),
       };
 
       if (isNew) {
@@ -81,6 +86,21 @@ export const CategoryUpdate = (props: ICategoryUpdateProps) => {
                 </Label>
                 <AvField id="category-code" data-cy="code" type="text" name="code" />
               </AvGroup>
+              <AvGroup>
+                <Label for="category-mcqPapper">
+                  <Translate contentKey="mcqApp.category.mcqPapper">Mcq Papper</Translate>
+                </Label>
+                <AvInput id="category-mcqPapper" data-cy="mcqPapper" type="select" className="form-control" name="mcqPapperId">
+                  <option value="" key="0" />
+                  {mcqPappers
+                    ? mcqPappers.map(otherEntity => (
+                        <option value={otherEntity.id} key={otherEntity.id}>
+                          {otherEntity.id}
+                        </option>
+                      ))
+                    : null}
+                </AvInput>
+              </AvGroup>
               <Button tag={Link} id="cancel-save" to="/category" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;
@@ -103,6 +123,7 @@ export const CategoryUpdate = (props: ICategoryUpdateProps) => {
 };
 
 const mapStateToProps = (storeState: IRootState) => ({
+  mcqPappers: storeState.mcqPapper.entities,
   categoryEntity: storeState.category.entity,
   loading: storeState.category.loading,
   updating: storeState.category.updating,
@@ -110,6 +131,7 @@ const mapStateToProps = (storeState: IRootState) => ({
 });
 
 const mapDispatchToProps = {
+  getMcqPappers,
   getEntity,
   updateEntity,
   createEntity,

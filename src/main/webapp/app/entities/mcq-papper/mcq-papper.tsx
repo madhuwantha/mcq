@@ -53,9 +53,6 @@ export const McqPapper = (props: IMcqPapperProps) => {
                   <Translate contentKey="mcqApp.mcqPapper.timeInMin">Time In Min</Translate>
                 </th>
                 <th>
-                  <Translate contentKey="mcqApp.mcqPapper.category">Category</Translate>
-                </th>
-                <th>
                   <Translate contentKey="mcqApp.mcqPapper.questions">Questions</Translate>
                 </th>
                 <th />
@@ -71,7 +68,6 @@ export const McqPapper = (props: IMcqPapperProps) => {
                   </td>
                   <td>{mcqPapper.title}</td>
                   <td>{mcqPapper.timeInMin}</td>
-                  <td>{mcqPapper.category ? <Link to={`category/${mcqPapper.category.id}`}>{mcqPapper.category.id}</Link> : ''}</td>
                   <td>
                     {mcqPapper.questions
                       ? mcqPapper.questions.map((val, j) => (
