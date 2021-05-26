@@ -19,10 +19,11 @@
       "ownerSide": true
     },
     {
-      "relationshipType": "one-to-many",
+      "relationshipType": "many-to-many",
       "otherEntityName": "category",
-      "otherEntityRelationshipName": "mcqPapper",
-      "relationshipName": "categories"
+      "otherEntityRelationshipName": "mcqqPappers",
+      "relationshipName": "categories",
+      "ownerSide": false
     }
   ],
   "entityTableName": "mcq_papper",

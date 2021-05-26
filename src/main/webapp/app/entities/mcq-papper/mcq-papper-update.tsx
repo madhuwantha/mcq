@@ -9,6 +9,8 @@ import { IRootState } from 'app/shared/reducers';
 
 import { IQuestion } from 'app/shared/model/question.model';
 import { getEntities as getQuestions } from 'app/entities/question/question.reducer';
+import { ICategory } from 'app/shared/model/category.model';
+import { getEntities as getCategories } from 'app/entities/category/category.reducer';
 import { getEntity, updateEntity, createEntity, reset } from './mcq-papper.reducer';
 import { IMcqPapper } from 'app/shared/model/mcq-papper.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
@@ -20,7 +22,7 @@ export const McqPapperUpdate = (props: IMcqPapperUpdateProps) => {
   const [idsquestions, setIdsquestions] = useState([]);
   const [isNew] = useState(!props.match.params || !props.match.params.id);
 
-  const { mcqPapperEntity, questions, loading, updating } = props;
+  const { mcqPapperEntity, questions, categories, loading, updating } = props;
 
   const handleClose = () => {
     props.history.push('/mcq-papper');
@@ -34,6 +36,7 @@ export const McqPapperUpdate = (props: IMcqPapperUpdateProps) => {
     }
 
     props.getQuestions();
+    props.getCategories();
   }, []);
 
   useEffect(() => {
@@ -139,6 +142,7 @@ export const McqPapperUpdate = (props: IMcqPapperUpdateProps) => {
 
 const mapStateToProps = (storeState: IRootState) => ({
   questions: storeState.question.entities,
+  categories: storeState.category.entities,
   mcqPapperEntity: storeState.mcqPapper.entity,
   loading: storeState.mcqPapper.loading,
   updating: storeState.mcqPapper.updating,
@@ -147,6 +151,7 @@ const mapStateToProps = (storeState: IRootState) => ({
 
 const mapDispatchToProps = {
   getQuestions,
+  getCategories,
   getEntity,
   updateEntity,
   createEntity,

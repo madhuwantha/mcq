@@ -2,6 +2,8 @@ package com.equitem.soft.mcq.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -22,9 +24,9 @@ public class Category implements Serializable {
     private String code;
 
     @DBRef
-    @Field("mcqPapper")
+    @Field("mcqqPappers")
     @JsonIgnoreProperties(value = { "questions", "categories" }, allowSetters = true)
-    private McqPapper mcqPapper;
+    private Set<McqPapper> mcqqPappers = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public String getId() {
@@ -53,17 +55,29 @@ public class Category implements Serializable {
         this.code = code;
     }
 
-    public McqPapper getMcqPapper() {
-        return this.mcqPapper;
+    public Set<McqPapper> getMcqqPappers() {
+        return this.mcqqPappers;
     }
 
-    public Category mcqPapper(McqPapper mcqPapper) {
-        this.setMcqPapper(mcqPapper);
+    public Category mcqqPappers(Set<McqPapper> mcqPappers) {
+        this.setMcqqPappers(mcqPappers);
         return this;
     }
 
-    public void setMcqPapper(McqPapper mcqPapper) {
-        this.mcqPapper = mcqPapper;
+    public Category addMcqqPappers(McqPapper mcqPapper) {
+        this.mcqqPappers.add(mcqPapper);
+        mcqPapper.getCategories().add(this);
+        return this;
+    }
+
+    public Category removeMcqqPappers(McqPapper mcqPapper) {
+        this.mcqqPappers.remove(mcqPapper);
+        mcqPapper.getCategories().remove(this);
+        return this;
+    }
+
+    public void setMcqqPappers(Set<McqPapper> mcqPappers) {
+        this.mcqqPappers = mcqPappers;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

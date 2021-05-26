@@ -140,12 +140,13 @@ public class CategoryResource {
     /**
      * {@code GET  /categories} : get all the categories.
      *
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of categories in body.
      */
     @GetMapping("/categories")
-    public List<Category> getAllCategories() {
+    public List<Category> getAllCategories(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get all Categories");
-        return categoryRepository.findAll();
+        return categoryRepository.findAllWithEagerRelationships();
     }
 
     /**
@@ -157,7 +158,7 @@ public class CategoryResource {
     @GetMapping("/categories/{id}")
     public ResponseEntity<Category> getCategory(@PathVariable String id) {
         log.debug("REST request to get Category : {}", id);
-        Optional<Category> category = categoryRepository.findById(id);
+        Optional<Category> category = categoryRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(category);
     }
 
