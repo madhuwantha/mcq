@@ -1,0 +1,35 @@
+{
+  "name": "Answer",
+  "fields": [
+    {
+      "fieldName": "questionId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "answer",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "attempt",
+      "otherEntityRelationshipName": "answers",
+      "relationshipName": "attempt"
+    }
+  ],
+  "entityTableName": "answer",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210526152007"
+}
