@@ -1,0 +1,40 @@
+{
+  "name": "Question",
+  "fields": [
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "questionImageLink",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "answerImageLiks",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "correctOne",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "mcqPapper",
+      "otherEntityRelationshipName": "questions",
+      "relationshipName": "pappers",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "question",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210526161805"
+}

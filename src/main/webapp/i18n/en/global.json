@@ -9,6 +9,9 @@
         "main": "Entities",
         "answer": "Answer",
         "attempt": "Attempt",
+        "question": "Question",
+        "mcqPapper": "Mcq Papper",
+        "category": "Category",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
