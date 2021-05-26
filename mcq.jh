@@ -32,7 +32,7 @@ relationship OneToMany {
      Attempt{answers} to Answer{attempt}
 }
 relationship ManyToOne {
-	McqPapper{category} to Category
+	Category to McqPapper{categories}
 }
 relationship ManyToMany {
      McqPapper{questions} to Question{pappers}
