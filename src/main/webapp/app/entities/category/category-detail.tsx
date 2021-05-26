@@ -37,9 +37,18 @@ export const CategoryDetail = (props: ICategoryDetailProps) => {
           </dt>
           <dd>{categoryEntity.code}</dd>
           <dt>
-            <Translate contentKey="mcqApp.category.mcqPapper">Mcq Papper</Translate>
+            <Translate contentKey="mcqApp.category.mcqqPappers">Mcqq Pappers</Translate>
           </dt>
-          <dd>{categoryEntity.mcqPapper ? categoryEntity.mcqPapper.id : ''}</dd>
+          <dd>
+            {categoryEntity.mcqqPappers
+              ? categoryEntity.mcqqPappers.map((val, i) => (
+                  <span key={val.id}>
+                    <a>{val.id}</a>
+                    {categoryEntity.mcqqPappers && i === categoryEntity.mcqqPappers.length - 1 ? '' : ', '}
+                  </span>
+                ))
+              : null}
+          </dd>
         </dl>
         <Button tag={Link} to="/category" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}

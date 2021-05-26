@@ -17,6 +17,7 @@ import { mapIdList } from 'app/shared/util/entity-utils';
 export interface ICategoryUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
 export const CategoryUpdate = (props: ICategoryUpdateProps) => {
+  const [idsmcqqPappers, setIdsmcqqPappers] = useState([]);
   const [isNew] = useState(!props.match.params || !props.match.params.id);
 
   const { categoryEntity, mcqPappers, loading, updating } = props;
@@ -46,7 +47,7 @@ export const CategoryUpdate = (props: ICategoryUpdateProps) => {
       const entity = {
         ...categoryEntity,
         ...values,
-        mcqPapper: mcqPappers.find(it => it.id.toString() === values.mcqPapperId.toString()),
+        mcqqPappers: mapIdList(values.mcqqPappers),
       };
 
       if (isNew) {
@@ -87,10 +88,18 @@ export const CategoryUpdate = (props: ICategoryUpdateProps) => {
                 <AvField id="category-code" data-cy="code" type="text" name="code" />
               </AvGroup>
               <AvGroup>
-                <Label for="category-mcqPapper">
-                  <Translate contentKey="mcqApp.category.mcqPapper">Mcq Papper</Translate>
+                <Label for="category-mcqqPappers">
+                  <Translate contentKey="mcqApp.category.mcqqPappers">Mcqq Pappers</Translate>
                 </Label>
-                <AvInput id="category-mcqPapper" data-cy="mcqPapper" type="select" className="form-control" name="mcqPapperId">
+                <AvInput
+                  id="category-mcqqPappers"
+                  data-cy="mcqqPappers"
+                  type="select"
+                  multiple
+                  className="form-control"
+                  name="mcqqPappers"
+                  value={!isNew && categoryEntity.mcqqPappers && categoryEntity.mcqqPappers.map(e => e.id)}
+                >
                   <option value="" key="0" />
                   {mcqPappers
                     ? mcqPappers.map(otherEntity => (

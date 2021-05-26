@@ -33,7 +33,7 @@ public class McqPapper implements Serializable {
 
     @DBRef
     @Field("categories")
-    @JsonIgnoreProperties(value = { "mcqPapper" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "mcqqPappers" }, allowSetters = true)
     private Set<Category> categories = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -112,22 +112,22 @@ public class McqPapper implements Serializable {
 
     public McqPapper addCategories(Category category) {
         this.categories.add(category);
-        category.setMcqPapper(this);
+        category.getMcqqPappers().add(this);
         return this;
     }
 
     public McqPapper removeCategories(Category category) {
         this.categories.remove(category);
-        category.setMcqPapper(null);
+        category.getMcqqPappers().remove(this);
         return this;
     }
 
     public void setCategories(Set<Category> categories) {
         if (this.categories != null) {
-            this.categories.forEach(i -> i.setMcqPapper(null));
+            this.categories.forEach(i -> i.removeMcqqPappers(this));
         }
         if (categories != null) {
-            categories.forEach(i -> i.setMcqPapper(this));
+            categories.forEach(i -> i.addMcqqPappers(this));
         }
         this.categories = categories;
     }

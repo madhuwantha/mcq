@@ -8,10 +8,11 @@
   ],
   "relationships": [
     {
-      "relationshipType": "many-to-one",
+      "relationshipType": "many-to-many",
       "otherEntityName": "mcqPapper",
       "otherEntityRelationshipName": "categories",
-      "relationshipName": "mcqPapper"
+      "relationshipName": "mcqqPappers",
+      "ownerSide": true
     }
   ],
   "entityTableName": "category",
