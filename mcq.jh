@@ -12,6 +12,27 @@ entity Attempt {
     attemptNo Integer
 }
 
+entity Question {
+	code String,
+    questionImageLink String,
+    answerImageLiks String,
+    correctOne Integer
+}
+
+entity McqPapper{
+	title String,
+    timeInMin Integer
+}
+
+entity Category{
+	code String,
+}
+
 relationship OneToMany {
      Attempt{answers} to Answer{attempt}
+}
+
+relationship ManyToMany {
+     McqPapper{questions} to Question{pappers}
+     McqPapper{category} to Category
 }
