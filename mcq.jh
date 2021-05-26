@@ -31,9 +31,8 @@ entity Category{
 relationship OneToMany {
      Attempt{answers} to Answer{attempt}
 }
-relationship ManyToOne {
-	Category to McqPapper{categories}
-}
+
 relationship ManyToMany {
-     McqPapper{questions} to Question{pappers}
+     McqPapper{questions} to Question{pappers},
+     Category{mcqqPappers} to McqPapper{categories}
 }
