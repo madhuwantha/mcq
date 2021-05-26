@@ -20,6 +20,18 @@ import answer, {
 import attempt, {
   AttemptState
 } from 'app/entities/attempt/attempt.reducer';
+// prettier-ignore
+import question, {
+  QuestionState
+} from 'app/entities/question/question.reducer';
+// prettier-ignore
+import mcqPapper, {
+  McqPapperState
+} from 'app/entities/mcq-papper/mcq-papper.reducer';
+// prettier-ignore
+import category, {
+  CategoryState
+} from 'app/entities/category/category.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 export interface IRootState {
@@ -35,6 +47,9 @@ export interface IRootState {
   readonly settings: SettingsState;
   readonly answer: AnswerState;
   readonly attempt: AttemptState;
+  readonly question: QuestionState;
+  readonly mcqPapper: McqPapperState;
+  readonly category: CategoryState;
   /* jhipster-needle-add-reducer-type - JHipster will add reducer type here */
   readonly loadingBar: any;
 }
@@ -52,6 +67,9 @@ const rootReducer = combineReducers<IRootState>({
   settings,
   answer,
   attempt,
+  question,
+  mcqPapper,
+  category,
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */
   loadingBar,
 });

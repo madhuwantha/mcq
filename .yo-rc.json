@@ -43,8 +43,8 @@
     "clientTheme": "none",
     "clientThemeVariant": "",
     "reactive": false,
-    "entities": ["Answer", "Attempt"],
-    "lastLiquibaseTimestamp": 1622042408000
+    "entities": ["Answer", "Attempt", "Question", "McqPapper", "Category"],
+    "lastLiquibaseTimestamp": 1622045887000
   },
   "git-provider": "GitHub",
   "git-company": "madhuwantha",

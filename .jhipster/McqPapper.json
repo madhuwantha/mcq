@@ -1,0 +1,38 @@
+{
+  "name": "McqPapper",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "timeInMin",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "category",
+      "otherEntityRelationshipName": "mcqPapper",
+      "relationshipName": "category"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "question",
+      "otherEntityRelationshipName": "pappers",
+      "relationshipName": "questions",
+      "ownerSide": true
+    }
+  ],
+  "entityTableName": "mcq_papper",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210526161806"
+}

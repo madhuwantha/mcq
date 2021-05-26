@@ -1,0 +1,20 @@
+{
+  "name": "Category",
+  "fields": [
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "category",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210526161807"
+}

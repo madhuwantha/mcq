@@ -1,0 +1,27 @@
+{
+  "mcqApp": {
+    "mcqPapper": {
+      "home": {
+        "title": "Mcq Pappers",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Mcq Papper",
+        "createOrEditLabel": "Create or edit a Mcq Papper",
+        "notFound": "No Mcq Pappers found"
+      },
+      "created": "A new Mcq Papper is created with identifier {{ param }}",
+      "updated": "A Mcq Papper is updated with identifier {{ param }}",
+      "deleted": "A Mcq Papper is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Mcq Papper {{ id }}?"
+      },
+      "detail": {
+        "title": "Mcq Papper"
+      },
+      "id": "ID",
+      "title": "Title",
+      "timeInMin": "Time In Min",
+      "category": "Category",
+      "questions": "Questions"
+    }
+  }
+}
