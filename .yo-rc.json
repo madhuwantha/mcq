@@ -42,7 +42,9 @@
     "jwtSecretKey": "ZTI4ZDhmOGM2MDMwNTlhNGUwNTRiMWFjOTBkMGNmMGY4ZDkzZTk2MWFiNzRjNDQ2NDY5YzA5Mjk4ZDczZWZjMjk2Y2MwNDRlY2U4ZDg1ZWU5Mzk3YWM0ZWVmY2M5ZGVhMDVmMDMzNDE5MzliYzJkOGJhMDBjMjU3ZDdhZmViZGI=",
     "clientTheme": "none",
     "clientThemeVariant": "",
-    "reactive": false
+    "reactive": false,
+    "entities": ["Answer", "Attempt"],
+    "lastLiquibaseTimestamp": 1622042408000
   },
   "git-provider": "GitHub",
   "git-company": "madhuwantha",

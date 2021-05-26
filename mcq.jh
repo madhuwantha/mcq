@@ -1,0 +1,17 @@
+
+
+
+entity Answer {
+	questionId String,
+    answer Integer
+    status Boolean 
+}
+entity Attempt {
+	studendId String,
+    papperId String,
+    attemptNo Integer
+}
+
+relationship OneToMany {
+     Attempt{answers} to Answer{attempt}
+}
