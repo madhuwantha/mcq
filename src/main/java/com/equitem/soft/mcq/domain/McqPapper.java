@@ -27,13 +27,14 @@ public class McqPapper implements Serializable {
     private Integer timeInMin;
 
     @DBRef
-    @Field("category")
-    private Category category;
-
-    @DBRef
     @Field("questions")
     @JsonIgnoreProperties(value = { "pappers" }, allowSetters = true)
     private Set<Question> questions = new HashSet<>();
+
+    @DBRef
+    @Field("categories")
+    @JsonIgnoreProperties(value = { "mcqPapper" }, allowSetters = true)
+    private Set<Category> categories = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public String getId() {
@@ -75,19 +76,6 @@ public class McqPapper implements Serializable {
         this.timeInMin = timeInMin;
     }
 
-    public Category getCategory() {
-        return this.category;
-    }
-
-    public McqPapper category(Category category) {
-        this.setCategory(category);
-        return this;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
     public Set<Question> getQuestions() {
         return this.questions;
     }
@@ -111,6 +99,37 @@ public class McqPapper implements Serializable {
 
     public void setQuestions(Set<Question> questions) {
         this.questions = questions;
+    }
+
+    public Set<Category> getCategories() {
+        return this.categories;
+    }
+
+    public McqPapper categories(Set<Category> categories) {
+        this.setCategories(categories);
+        return this;
+    }
+
+    public McqPapper addCategories(Category category) {
+        this.categories.add(category);
+        category.setMcqPapper(this);
+        return this;
+    }
+
+    public McqPapper removeCategories(Category category) {
+        this.categories.remove(category);
+        category.setMcqPapper(null);
+        return this;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        if (this.categories != null) {
+            this.categories.forEach(i -> i.setMcqPapper(null));
+        }
+        if (categories != null) {
+            categories.forEach(i -> i.setMcqPapper(this));
+        }
+        this.categories = categories;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

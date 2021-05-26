@@ -12,17 +12,17 @@
   ],
   "relationships": [
     {
-      "relationshipType": "many-to-one",
-      "otherEntityName": "category",
-      "otherEntityRelationshipName": "mcqPapper",
-      "relationshipName": "category"
-    },
-    {
       "relationshipType": "many-to-many",
       "otherEntityName": "question",
       "otherEntityRelationshipName": "pappers",
       "relationshipName": "questions",
       "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "category",
+      "otherEntityRelationshipName": "mcqPapper",
+      "relationshipName": "categories"
     }
   ],
   "entityTableName": "mcq_papper",

@@ -43,10 +43,6 @@ export const McqPapperDetail = (props: IMcqPapperDetailProps) => {
           </dt>
           <dd>{mcqPapperEntity.timeInMin}</dd>
           <dt>
-            <Translate contentKey="mcqApp.mcqPapper.category">Category</Translate>
-          </dt>
-          <dd>{mcqPapperEntity.category ? mcqPapperEntity.category.id : ''}</dd>
-          <dt>
             <Translate contentKey="mcqApp.mcqPapper.questions">Questions</Translate>
           </dt>
           <dd>

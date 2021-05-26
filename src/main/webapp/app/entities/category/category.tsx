@@ -49,6 +49,9 @@ export const Category = (props: ICategoryProps) => {
                 <th>
                   <Translate contentKey="mcqApp.category.code">Code</Translate>
                 </th>
+                <th>
+                  <Translate contentKey="mcqApp.category.mcqPapper">Mcq Papper</Translate>
+                </th>
                 <th />
               </tr>
             </thead>
@@ -61,6 +64,7 @@ export const Category = (props: ICategoryProps) => {
                     </Button>
                   </td>
                   <td>{category.code}</td>
+                  <td>{category.mcqPapper ? <Link to={`mcq-papper/${category.mcqPapper.id}`}>{category.mcqPapper.id}</Link> : ''}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${category.id}`} color="info" size="sm" data-cy="entityDetailsButton">

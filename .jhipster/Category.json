@@ -6,7 +6,14 @@
       "fieldType": "String"
     }
   ],
-  "relationships": [],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "mcqPapper",
+      "otherEntityRelationshipName": "categories",
+      "relationshipName": "mcqPapper"
+    }
+  ],
   "entityTableName": "category",
   "dto": "no",
   "pagination": "no",
