@@ -18,7 +18,8 @@
         "title": "Category"
       },
       "id": "ID",
-      "code": "Code"
+      "code": "Code",
+      "mcqPapper": "Mcq Papper"
     }
   }
 }

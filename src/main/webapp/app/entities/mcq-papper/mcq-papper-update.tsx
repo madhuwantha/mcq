@@ -7,8 +7,6 @@ import { Translate, translate } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 
-import { ICategory } from 'app/shared/model/category.model';
-import { getEntities as getCategories } from 'app/entities/category/category.reducer';
 import { IQuestion } from 'app/shared/model/question.model';
 import { getEntities as getQuestions } from 'app/entities/question/question.reducer';
 import { getEntity, updateEntity, createEntity, reset } from './mcq-papper.reducer';
@@ -22,7 +20,7 @@ export const McqPapperUpdate = (props: IMcqPapperUpdateProps) => {
   const [idsquestions, setIdsquestions] = useState([]);
   const [isNew] = useState(!props.match.params || !props.match.params.id);
 
-  const { mcqPapperEntity, categories, questions, loading, updating } = props;
+  const { mcqPapperEntity, questions, loading, updating } = props;
 
   const handleClose = () => {
     props.history.push('/mcq-papper');
@@ -35,7 +33,6 @@ export const McqPapperUpdate = (props: IMcqPapperUpdateProps) => {
       props.getEntity(props.match.params.id);
     }
 
-    props.getCategories();
     props.getQuestions();
   }, []);
 
@@ -51,7 +48,6 @@ export const McqPapperUpdate = (props: IMcqPapperUpdateProps) => {
         ...mcqPapperEntity,
         ...values,
         questions: mapIdList(values.questions),
-        category: categories.find(it => it.id.toString() === values.categoryId.toString()),
       };
 
       if (isNew) {
@@ -98,21 +94,6 @@ export const McqPapperUpdate = (props: IMcqPapperUpdateProps) => {
                 <AvField id="mcq-papper-timeInMin" data-cy="timeInMin" type="string" className="form-control" name="timeInMin" />
               </AvGroup>
               <AvGroup>
-                <Label for="mcq-papper-category">
-                  <Translate contentKey="mcqApp.mcqPapper.category">Category</Translate>
-                </Label>
-                <AvInput id="mcq-papper-category" data-cy="category" type="select" className="form-control" name="categoryId">
-                  <option value="" key="0" />
-                  {categories
-                    ? categories.map(otherEntity => (
-                        <option value={otherEntity.id} key={otherEntity.id}>
-                          {otherEntity.id}
-                        </option>
-                      ))
-                    : null}
-                </AvInput>
-              </AvGroup>
-              <AvGroup>
                 <Label for="mcq-papper-questions">
                   <Translate contentKey="mcqApp.mcqPapper.questions">Questions</Translate>
                 </Label>
@@ -157,7 +138,6 @@ export const McqPapperUpdate = (props: IMcqPapperUpdateProps) => {
 };
 
 const mapStateToProps = (storeState: IRootState) => ({
-  categories: storeState.category.entities,
   questions: storeState.question.entities,
   mcqPapperEntity: storeState.mcqPapper.entity,
   loading: storeState.mcqPapper.loading,
@@ -166,7 +146,6 @@ const mapStateToProps = (storeState: IRootState) => ({
 });
 
 const mapDispatchToProps = {
-  getCategories,
   getQuestions,
   getEntity,
   updateEntity,
